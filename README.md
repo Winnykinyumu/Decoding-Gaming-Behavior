@@ -291,6 +291,28 @@ from [Game Analysis].dbo.level_details2
 ```
 ![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/1bbf0d58-4719-407e-ae90-3e116bec5f38)
 
+## Key Insights
+
+- The analysis showed that the  number of unique play dates per player were above average which highlighted that more players frequently played the game.
+- There was a notable increase in the average number of scores and stages crossed at the difficult level compared to the low and medium levels which proved the game to be less 	 
+  challenging.
+- At the different game levels, level 2 presented to have more lives earned compared to level 1 which implied that the level design was less challenging and easier to navigate for most players.
+- The top score presented for the game was 5500 which was earned at the difficult level while the lowest score for the game was 40 which was earned at the medium level. This presented that the game was highly competitive with highly skilled players.
+
+## Recommendation
+
+- Implement targeted incentives like rewards for top players to improve play and retention rates.
+- Implement systems to gather player feedback. This can provide valuable insights into potential issues and areas for improvement.
+
+## Limitation
+
+- The analysis did not account for external factors that may influence a player behavior such as game updates or seasonal events.
+- The data set does not contain demographic details such as age, location, which could have provided additional context for player behavior and preferences.
+
+
+
+
+
 
 
 
