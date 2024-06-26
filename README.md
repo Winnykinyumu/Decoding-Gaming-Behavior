@@ -52,21 +52,26 @@ SQL for data cleaning and analysis.
    ```
 
 **2. Deleting Duplicates**
-
-    ```SQL
-    WITH CTE As (
-    SELECT*, 
-                ROW_NUMBER() OVER
-                (
-                PARTITION BY P_ID, Dev_ID,start_datetime
-                order by P_ID
-          ) as rownum
-         FROM [Game Analysis].dbo.level_details2
-       )
-    DELETE
-    FROM CTE 
-    WHERE rownum>1
-    ```
+```SQL
+WITH CTE As (
+SELECT*,
+           ROW_NUMBER() OVER
+		   (
+		   PARTITION BY P_ID, Dev_ID, start_datetime 
+		   order by P_ID
+ 	) as rownum
+ FROM [Game Analysis].dbo.level_details2
+ )
+DELETE
+FROM CTE
+WHERE rownum > 1
+```
+**3. Creating Primary Key Constraints**
+```SQL
+ALTER TABLE [Game Analysis].dbo.level_details2
+ADD CONSTRAINT PK_level_details2 PRIMARY KEY (P_ID,Dev_ID,start_datetime)
+```
+  
 ## Data Analysis
 1. Extract `P_ID`, `Dev_ID`, `PName`, and `Difficulty_level` of all players at Level 0.
    ```SQL
