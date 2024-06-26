@@ -201,7 +201,7 @@ order by Score ASC
 ```
 ![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/83d1a71c-18e1-408f-b5d9-b682ea89c0af)
 
-13. Find the device ID that is first logged in (based on `start_datetime`) for each player (`P_ID`). Output should contain player ID, device ID, and first login datetime.
+11. Find the device ID that is first logged in (based on `start_datetime`) for each player (`P_ID`). Output should contain player ID, device ID, and first login datetime.
 
 ```SQL
 SELECT P_ID, Dev_ID, MIN(start_datetime) AS first_logged_in
@@ -210,7 +210,7 @@ GROUP BY P_ID,Dev_ID
 ```
 ![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/fde98203-78bc-4426-a186-ee4bae3dbd33)
 
-15. For each player and date, determine how many `kill_counts` were played by the player so far.
+12. For each player and date, determine how many `kill_counts` were played by the player so far.
 a) Using window functions
 
 ```SQL
@@ -226,10 +226,68 @@ ORDER BY number_of_killcounts
 ![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/db9c2d24-4e51-4b27-b050-e2470b6d77a3)
 
 b) Without window functions
-12. Find the cumulative sum of stages crossed over `start_datetime` for each `P_ID`, excluding the most recent `start_datetime`.
-13. Extract the top 3 highest sums of scores for each `Dev_ID` and the corresponding `P_ID`.
-14. Find players who scored more than 50% of the average score, scored by the sum of scores for each `P_ID`.
-15. Create a stored procedure to find the top `n` `headshots_count` based on each `Dev_ID` and rank them in increasing order using `Row_Number`. Display the difficulty as well
+```SQL
+select level.P_ID,player.PName, Level.start_datetime,
+SUM(level.Kill_Count) as number_of_killcounts
+FROM [Game Analysis].dbo.level_details2 as level
+INNER JOIN 
+[Game Analysis].dbo.player_details as player
+ON 
+level.P_ID=player.P_ID
+GROUP BY player.PName, Level.start_datetime, level.Kill_Count, level.P_ID
+ORDER BY number_of_killcounts
+```
+![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/72bda4ab-444a-4305-91f7-2b2b68da28a8)
+
+13. Find the cumulative sum of stages crossed over `start_datetime` for each `P_ID`, excluding the most recent `start_datetime`.
+
+```SQL
+WITH cumulativeCTE as 
+(
+SELECT P_ID,Stages_crossed,start_datetime, 
+SUM(Stages_crossed) OVER (ORDER BY start_datetime ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS cumulativesum,
+ROW_NUMBER () OVER (PARTITION BY P_ID ORDER BY start_datetime DESC) AS row_num
+FROM [Game Analysis].dbo.level_details2
+)
+SELECT P_ID,cumulativesum,start_datetime,row_num
+from cumulativeCTE
+WHERE row_num > 1
+GROUP BY P_ID, start_datetime,cumulativesum,row_num
+```
+![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/d2f805d8-8a61-49fd-9cfb-844a5a205fd2)
+
+14. Extract the top 3 highest sums of scores for each `Dev_ID` and the corresponding `P_ID`.
+```SQL
+With sumCTE AS 
+(
+SELECT Dev_ID, P_ID, 
+SUM(Score) as sumscores,
+ROW_NUMBER () OVER (PARTITION BY Dev_ID ORDER BY SUM(Score) DESC ) AS rownum
+from [Game Analysis].dbo.level_details2
+GROUP BY Dev_ID, P_ID
+)
+SELECT TOP 3 sumscores,Dev_ID,P_ID
+FROM sumCTE 
+ORDER BY sumscores DESC
+```
+![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/42b61f5a-416b-4666-8eec-06a24455027c)
+
+15. Find players who scored more than 50% of the average score, scored by the sum of scores for each `P_ID`.
+
+```SQL
+SELECT P_ID, SUM(Score) AS Sum_score
+from [Game Analysis].dbo.level_details2
+GROUP BY P_ID
+HAVING SUM(Score) >0.5* 
+(
+SELECT AVG(Score)
+from [Game Analysis].dbo.level_details2
+)
+```
+![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/1bbf0d58-4719-407e-ae90-3e116bec5f38)
+
+
+
 
 
 
