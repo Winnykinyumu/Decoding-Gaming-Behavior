@@ -200,11 +200,13 @@ order by Score ASC
  ) AS rank
  FROM [Game Analysis].dbo.level_details2
  ) 
-SELECT Score,Dev_ID,Difficulty,rank
+SELECT Top 5 Score,Dev_ID,Difficulty,rank
 FROM row_numCTE
 order by Score ASC
 ```
-![image](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/83d1a71c-18e1-408f-b5d9-b682ea89c0af)
+
+![image](https://github.com/Winnykinyumu/Decoding-Gaming-Behavior/assets/124139386/ef11d4aa-222e-4ad0-b7e6-8248016d640c)
+
 
 11. Find the device ID that is first logged in (based on `start_datetime`) for each player (`P_ID`). Output should contain player ID, device ID, and first login datetime.
 
