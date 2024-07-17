@@ -295,7 +295,7 @@ from [Game Analysis].dbo.level_details2
 
 ## Key Insights
 
-- The analysis showed that the  number of unique play dates per player were above average which highlighted that more players frequently played the game.
+- There was a significant number of unique play dates per player which highlighted that more players frequently played the game.
 - There was a notable increase in the average number of scores and stages crossed at the difficult level compared to the low and medium levels which proved the game to be less 	 
   challenging.
 - At the different game levels, level 2 presented to have more lives earned compared to level 1 which implied that the level design was less challenging and easier to navigate for most players.
