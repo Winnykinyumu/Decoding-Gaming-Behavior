@@ -299,7 +299,7 @@ from [Game Analysis].dbo.level_details2
 - There was a notable increase in the average number of scores and stages crossed at the difficult level compared to the low and medium levels which proved the game to be less 	 
   challenging.
 - At the different game levels, level 2 presented to have more lives earned compared to level 1 which implied that the level design was less challenging and easier to navigate for most players.
-- The top score presented for the game was 5500 which was earned at the difficult level while the lowest score for the game was 40 which was earned at the medium level. This presented that the game was highly competitive with highly skilled players.
+- The top score presented for the game was 6850 which was earned at the difficult level while the lowest score for the game was 40 which was earned at the medium level. This presented that the game was highly competitive with highly skilled players.
 
 ## Recommendation
 
