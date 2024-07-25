@@ -299,6 +299,9 @@ from [Game Analysis].dbo.level_details2
 
 ## Key Insights
 
+![presentation](https://github.com/user-attachments/assets/22fe6b5e-d332-42b1-be66-bdbac2ad3d2f)
+
+
 - There was a significant number of unique play dates per player which highlighted that more players frequently played the game.
 - There was a notable increase in the average number of scores and stages crossed at the difficult level compared to the low and medium levels which proved the game to be less 	 
   challenging.
@@ -314,6 +317,9 @@ from [Game Analysis].dbo.level_details2
 
 - The analysis did not account for external factors that may influence a player behavior such as game updates or seasonal events.
 - The data set does not contain demographic details such as age, location, which could have provided additional context for player behavior and preferences.
+
+![thank you resized](https://github.com/user-attachments/assets/8b574417-46ae-4668-852d-134a5af531cd)
+
 
 
 
