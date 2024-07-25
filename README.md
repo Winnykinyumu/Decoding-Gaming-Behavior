@@ -1,6 +1,7 @@
 # Game-Analysis
 
-![presentation](https://github.com/Winnykinyumu/Game-Analysis/assets/124139386/80f19331-5895-44cc-8647-4cf52985e593)
+![video game resized](https://github.com/user-attachments/assets/21f81119-6bd0-4356-80a5-095b12e9f332)
+
 
 ## Project Overview
 The objective of this analysis is to leverage player and gameplay data to enhance the game's design, improve player experience and optimize retention and engagement strategies.
@@ -37,6 +38,9 @@ SQL for data cleaning and analysis.
 - `lives_earned`: Extra Lives Earne
 
 ## Data Cleaning/Preparation
+
+![Data cleaning resized](https://github.com/user-attachments/assets/4fb3fe74-99ae-43d6-ba1e-39b91de9fdfa)
+
 
 **1. Data type conversation: Changed timestamp into date format.**
 
